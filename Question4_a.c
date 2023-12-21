@@ -67,6 +67,24 @@ int main(int argc, char *argv[]) {
         write(STDERR_FILENO, "Connection established!\n", 24);
     }
 
+    // Construction of a read request (RRQ)
+    // Establishing RRQ protocol based on RFC1350
+    char buffer_send[516];  // Assuming the buffer size needed for RRQ
+    buffer_send[0] = 0;
+    buffer_send[1] = 1;
+    strcpy(&buffer_send[2], file);
+    buffer_send[2 + strlen(file)] = 0;
+    strcpy(&buffer_send[2 + strlen(file) + 1], "octet");
+    buffer_send[2 + strlen(file) + strlen("octet") + 2] = 0;
+    int size = strlen(file) + strlen("octet") + 4;
+
+    // Send RRQ message to the server
+    ssize_t sendSize = sendto(sock, buffer_send, size, 0, res->ai_addr, res->ai_addrlen);
+    if(sendSize == -1){
+        write(STDERR_FILENO, "Error sending packet\n", 21);
+        return 1; // Return an error code indicating failure
+    }
+
     
     // Program execution success
     return 0;
