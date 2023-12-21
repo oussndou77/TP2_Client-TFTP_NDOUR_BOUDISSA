@@ -110,15 +110,19 @@ int main(int argc, char *argv[]) {
     ackPacket[2] = (blockNum >> 8) & 0xFF;
     ackPacket[3] = blockNum & 0xFF;
 
-    // Send the ACK packet to the server
-    ssize_t sendAckSize = sendto(sock, ackPacket, sizeof(ackPacket), 0, res->ai_addr, res->ai_addrlen);
-    if(sendAckSize == -1){
-        // Print an error message if sending ACK fails
-        write(STDERR_FILENO, "Error sending ACK\n", 19);
-        return 1; // Return an error code indicating failure
-    }
 
-    
+    // Send the ACK packet to the server
+ssize_t sendAckSize = sendto(sock, ackPacket, sizeof(ackPacket), 0, res->ai_addr, res->ai_addrlen);
+if (sendAckSize == -1) {
+    // Print an error message if sending ACK fails
+    write(STDERR_FILENO, "Error sending ACK\n", 19);
+    return 1; // Return an error code indicating failure
+} else {
+    // Print a success message if sending ACK succeeds
+    write(STDOUT_FILENO, "ACK sent successfully!\n", 23);
+}
+
+
     // Program execution success
     return 0;
 }
