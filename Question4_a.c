@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
         return 1; // Return an error code indicating failure
     } else {
         // Print a success message if getaddrinfo succeeds
-        write(STDERR_FILENO, "Connection established successfully!\n", 36);
+        write(STDERR_FILENO, "Connection established successfully!", 35);
     }
 
     // Reservation of a connection socket to the server
@@ -64,7 +64,8 @@ int main(int argc, char *argv[]) {
         write(STDERR_FILENO, "Connection error!\n", 19);
         return 1; // Return an error code indicating failure
     } else {
-        write(STDERR_FILENO, "Connection established!\n", 24);
+        write(STDERR_FILENO, "Socket reserved", 16);
+        write(STDOUT_FILENO, "\n", 1);
     }
 
     // Construction of a read request (RRQ)

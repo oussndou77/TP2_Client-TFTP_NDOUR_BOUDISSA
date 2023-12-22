@@ -55,7 +55,8 @@ int main(int argc, char *argv[]) {
         write(STDERR_FILENO, "\n", 1);
     } else {
         // Print a success message if getaddrinfo succeeds
-        write(STDERR_FILENO, "Connection established successfully!\n", 36);
+        write(STDERR_FILENO, "Connection established successfully!", 35);
+        write(STDOUT_FILENO, "\n", 1);
     }
 
     // Program execution success
