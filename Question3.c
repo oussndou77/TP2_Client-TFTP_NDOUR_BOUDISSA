@@ -1,11 +1,7 @@
-#include <sys/socket.h>
-#include <netdb.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <netinet/in.h>
-
+#include <netdb.h>
 
 int main(int argc, char *argv[]) {
     // Check if the correct number of command-line arguments is provided
@@ -55,7 +51,8 @@ int main(int argc, char *argv[]) {
         return 1; // Return an error code indicating failure
     } else {
         // Print a success message if getaddrinfo succeeds
-        write(STDERR_FILENO, "Connection established successfully!\n", 36);
+        write(STDERR_FILENO, "Connection established successfully!", 36);
+        write(STDOUT_FILENO, "\n", 1);
     }
 
     // Reservation of a connection socket to the server
@@ -64,7 +61,8 @@ int main(int argc, char *argv[]) {
         write(STDERR_FILENO, "Connection error!\n", 19);
         return 1; // Return an error code indicating failure
     } else {
-        write(STDERR_FILENO, "Connection established!\n", 24);
+        write(STDERR_FILENO, "Socket reserved", 16);
+        write(STDOUT_FILENO, "\n", 1);
     }
 
     
