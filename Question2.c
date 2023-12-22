@@ -39,13 +39,14 @@ int main(int argc, char *argv[]) {
     write(STDOUT_FILENO, "\n", 1);
 
     // Memory allocation to store hints
+    struct addrinfo hints, *res;
     memset(&hints, 0, sizeof(struct addrinfo));
     hints.ai_family = AF_INET;         // Choose Ipv = Ipv4
     hints.ai_socktype = SOCK_DGRAM;    // Choose socket type
     hints.ai_protocol = IPPROTO_UDP;   // Choose UDP protocol
 
     // Get server address information using getaddrinfo
-    int add_serv = getaddrinfo(serv, port, &hints, &res);
+    int add_serv = getaddrinfo(host, port, &hints, &res);
     if (add_serv) {
         // Print an error message if getaddrinfo fails
         char* error_message = gai_strerror(add_serv);
