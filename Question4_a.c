@@ -71,7 +71,7 @@ int main(int argc, char *argv[]) {
     // Establishing RRQ protocol based on RFC1350
     char buffer_send[516];  // Assuming the buffer size needed for RRQ
     buffer_send[0] = 0;
-    buffer_send[1] = 1;
+    buffer_send[1] = 1;    // Opcode for RRQ
     strcpy(&buffer_send[2], file);
     buffer_send[2 + strlen(file)] = 0;
     strcpy(&buffer_send[2 + strlen(file) + 1], "octet");
