@@ -1,4 +1,6 @@
 README
+
+
 Ce projet implémente un client et un serveur TFTP en langage C. Le protocole TFTP (Trivial File Transfer Protocol) est un protocole léger pour transférer des fichiers sur un réseau.
 
 1. Utilisation des arguments passés à la ligne de commande: 
